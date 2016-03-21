@@ -1,0 +1,62 @@
+Angular 1.x
+angular.module(‘example’)
+.controller(‘ExampleCtrl’, function($scope) {
+$scope.name = “John Smith”;
+});
+
+Angular 2.0
+import {Component, View} from 'angular2/angular2';
+@Component({
+     selector: 'example' })
+@View({
+templateUrl: './components/example/example.html' })
+
+export class Example {
+     constructor() {
+         this.name = “John Smith”;     
+}
+}
+A view template part in Angulax 1.x
+<td ng-repeat="query in database.topFiveQueries"
+        ng-class="getClassName(query)"> 
+
+And associated JS code
+dbmonControllers.controller('MainController', ['$scope', '$timeout',
+    function($scope, $timeout) {
+        $scope.loadCount = 0;
+        $scope.databases = {};
+
+        $scope.getClassName = function(query) {
+            var className = "elapsed short";
+            if (query.elapsed >= 10.0) {
+                className = "elapsed warn_long";
+            } else if (query.elapsed >= 1.0) {
+                className = "elapsed warn";
+            }
+            return "Query " + className;
+        };
+        //(...)
+    }
+);
+Angular 2.0
+    <td *ngFor="#query of database.topFiveQueries"
+        [ngClass]="getClassName(query)">
+
+    app.AppComponent = ng.core
+    .Component({
+      selector: 'my-app',
+      templateUrl: './app/component.html'
+      //directives: [angular.NgFor]
+    })
+    .Class({
+            //(...)
+        getClassName: function(query) {
+                var className = "elapsed short";
+                if (query.elapsed >= 10.0) {
+                        className = "elapsed warn_long";
+                } else if (query.elapsed >= 1.0) {
+                        className = "elapsed warn";
+                }
+                return "Query " + className;
+        }
+]);
